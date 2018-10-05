@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QtSerialPort/QSerialPortInfo>
-#include <QtSerialPort/QSerialPort>
 #include <QObject>
+#include <myserial.h>
 
 
 namespace Ui
@@ -17,26 +16,13 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 private:
     Ui::MainWindow *ui;
-    // Not system methods and variables
-    QSerialPort *serial;
-    QList<QSerialPortInfo> pNames;
-    struct SettingsPort
-    {
-        QString name;   //  Name of Com port
-        QString rate;   //  Baud rate   600 - 256000
-        QString data;   //  Data bits   5-8
-        QString prty;   //  Parity      none, odd, even, mark, space
-        QString stpb;   //  Stop bits   1, 1,5, 2
-        QString hshg;   //  Handshaking
-    };
-    SettingsPort configUsingPort;
+    QList<QSerialPortInfo> aboutPorts;  // This list is used to save data about ports
+    MySerial serial;    // Obj. at myserial.h
+    QString allPorts;
     static const int MAX_RATES = 3;
-    bool flagFind;
-    bool flagConnect;
-    int baudRates[MAX_RATES];
-    void SearchPorts();
-    void ConnetToCom();
-    // End n.s.m.
+    int baudRates[MAX_RATES];           // for comboBoxset baudrate
+    bool flagFind;                      // for buttons
+    bool flagConnect;                   // for buttons
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

@@ -89,7 +89,7 @@
      <item row="0" column="3">
       <widget class="QPushButton" name="pushButtonFind">
        <property name="text">
-        <string>Find</string>
+        <string>Find ports</string>
        </property>
       </widget>
      </item>
