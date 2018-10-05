@@ -29,6 +29,8 @@ private:
     };
     SettingsPort configUsingPort;
     static const int MAX_RATES = 3;
+    bool flagFind;
+    bool flagConnect;
     int baudRates[MAX_RATES];
     void SearchPorts();
     void ChoiseBaudRate();
@@ -40,6 +42,10 @@ public:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void on_pushButtonFind_clicked();
+    void on_pushButtonConnect_clicked();
+    void on_pushButtonSend_clicked();
+    void on_pushButtonClearWindow_clicked();
 };
 
 #endif // MAINWINDOW_H
