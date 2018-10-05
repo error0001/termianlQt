@@ -19,7 +19,7 @@
      <rect>
       <x>10</x>
       <y>0</y>
-      <width>321</width>
+      <width>330</width>
       <height>181</height>
      </rect>
     </property>
@@ -69,34 +69,48 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="pushButtonFind">
-       <property name="text">
-        <string>Find</string>
-       </property>
-      </widget>
-     </item>
      <item row="1" column="1">
       <widget class="QComboBox" name="comboBoxBaudRates"/>
      </item>
-     <item row="1" column="2">
+     <item row="1" column="3">
       <widget class="QPushButton" name="pushButtonConnect">
        <property name="text">
         <string>Connect</string>
        </property>
       </widget>
      </item>
-     <item row="2" column="2">
+     <item row="2" column="3">
       <widget class="QPushButton" name="pushButtonSend">
        <property name="text">
         <string>Send</string>
        </property>
       </widget>
      </item>
-     <item row="4" column="2">
+     <item row="0" column="3">
+      <widget class="QPushButton" name="pushButtonFind">
+       <property name="text">
+        <string>Find</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="3">
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="3">
       <widget class="QPushButton" name="pushButtonClearWindow">
        <property name="text">
         <string>Clear window</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="3">
+      <widget class="QPushButton" name="pushButton_2">
+       <property name="text">
+        <string>PushButton</string>
        </property>
       </widget>
      </item>
@@ -126,7 +140,6 @@
     <property name="title">
      <string>Program</string>
     </property>
-    <addaction name="actionDevice"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuSettings">

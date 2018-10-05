@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QtSerialPort/QSerialPortInfo>
 #include <QtSerialPort/QSerialPort>
+#include <QObject>
+
 
 namespace Ui
 {
@@ -16,7 +18,7 @@ class MainWindow : public QMainWindow
 private:
     Ui::MainWindow *ui;
     // Not system methods and variables
-    QSerialPort serial;
+    QSerialPort *serial;
     QList<QSerialPortInfo> pNames;
     struct SettingsPort
     {
@@ -33,7 +35,7 @@ private:
     bool flagConnect;
     int baudRates[MAX_RATES];
     void SearchPorts();
-    void ChoiseBaudRate();
+    void ConnetToCom();
     // End n.s.m.
 public:
     explicit MainWindow(QWidget *parent = 0);

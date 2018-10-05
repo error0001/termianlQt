@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->comboBoxBaudRates->addItem(QString::number(baudRates[2]));
     flagFind = true;
     flagConnect = true;
+    serial = new QSerialPort(this);
 }
 
 // This button is "find all ports"
@@ -35,13 +36,26 @@ void MainWindow::SearchPorts()
 }
 
 // This button is "Choise baud rate"
-void MainWindow::ChoiseBaudRate()
+void MainWindow::ConnetToCom()
 {
-    //int temp = ui->comboBox->currentIndex();
-    //int temp2 = pNames.at(temp).serialNumber().toInt;
-    //serial.setPort(22);  // ui->comboBox->currentText()
-    serial.setBaudRate(ui->comboBoxBaudRates->currentText().toInt());
-
+    serial->setPortName( ui->comboBoxComs->itemText(ui->comboBoxComs->currentIndex()) );
+    serial->setBaudRate(ui->comboBoxBaudRates->currentText().toInt());
+    serial->setDataBits(QSerialPort::Data8);
+    serial->setParity(QSerialPort::NoParity);
+    serial->setStopBits(QSerialPort::OneStop);
+    serial->setFlowControl(QSerialPort::NoFlowControl);
+    if(serial->open(QIODevice::ReadWrite))
+    {
+        ui->textEditMain->append("Connected");
+        QByteArray data;
+        data = "Conect is available";
+        serial->write(data);
+    }
+    else
+    {
+        ui->textEditMain->append("Error of connection");
+        serial->write("Error of connection");
+    }
 }
 
 MainWindow::~MainWindow()
@@ -76,7 +90,7 @@ void MainWindow::on_pushButtonConnect_clicked()
     {
         if(flagConnect)
         {
-            ChoiseBaudRate();
+            ConnetToCom();
             ui->comboBoxComs->setEnabled(false);
             ui->comboBoxBaudRates->setEnabled(false);
             ui->pushButtonFind->setEnabled(false);
@@ -102,4 +116,14 @@ void MainWindow::on_pushButtonSend_clicked()
 void MainWindow::on_pushButtonClearWindow_clicked()
 {
     ui->textEditMain->clear();
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
 }
