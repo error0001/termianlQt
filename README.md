@@ -1,1 +1,2 @@
 # termainalQt
+Needed IDE QTCreator
